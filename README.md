@@ -1,7 +1,7 @@
 
 ## About
-This is a collection of various sorts implemnted both as []int only and as constraints.Ordered[^1] generics.
-I split the generics into their own source file so they aren't ordered in the output, that way you can still run
+This is a collection of various sorts implemented both as []int only and as `constraints.Ordered`[^1] generics.
+I split the generics into their own source file, so they aren't ordered in the output, that way you can still run
 the normal []int sorting functions under go 1.17.
 
 [^1]:The generic counting sort uses `constraints.Integer` due to limitations in what a counting sort can do.
