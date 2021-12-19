@@ -64,30 +64,27 @@ func bsortg[P constraints.Ordered](arr []P) []P {
 	return arr
 }
 
-func csortg[P constraints.Ordered](arr []P) []P {
-	var cak []P
-	ca := make(map[P]int)
+func csortg[P constraints.Integer](arr []P) []P {
+	res := make([]P, len(arr))
+	var max P
+	max = 0
 	for _, v := range arr {
-		if ca[v] == 0 {
-			cak = append(cak, v)
+		if v > max {
+			max = v
 		}
+	}
+	ca := make([]int, max+1)
+	for _, v := range arr {
 		ca[v]++
 	}
-	cak = bsortg(cak)
-	var last *P
-	last = nil
-	for _, v := range cak {
-		tmp := v
-		if last != nil {
-			ca[v] += ca[*last]
-		}
-		last = &tmp
+
+	for i := 1; i < len(ca); i++ {
+		ca[i] += ca[i-1]
 	}
-	res := make([]P, len(arr))
 
 	for _, v := range arr {
 		res[ca[v]-1] = v
-		ca[v] -= 1
+		ca[v]--
 	}
 
 	return res
