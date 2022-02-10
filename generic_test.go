@@ -4,8 +4,9 @@
 package main
 
 import (
-	"constraints"
 	"testing"
+
+	"golang.org/x/exp/constraints"
 )
 
 func BenchmarkBubbleSortG(b *testing.B) {
